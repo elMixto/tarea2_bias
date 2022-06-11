@@ -1,0 +1,190 @@
+%% LyX 2.3.6.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[active]{srcltx}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage[unicode=true]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\begin{document}
+\title{Tarea 2: Bias lies and causal inference: data interpretation in the
+ubiquitous}
+\author{José González Cortés}
+
+\maketitle
+Todo el código con generado para la obtención de datos se puede encontrar
+en el repositorio: \href{https://github.com/elMixto/tarea2_bias}{github.com/elMixto/tarea2\_bias}
+
+\section*{Part A: How common is your name?}
+
+Esta pregunta está abierta a 2 interpretaciones, desde mi punto de
+vista:
+
+\paragraph{¿Cuan común es que se registre tu nombre a un bebé actualmente?}
+
+Se obtiene midiendo directamente la proporcion asociada al nombre
+``José'' para el año 2021 en el conjunto de datos.
+
+\begin{center}
+
+\includegraphics[scale=0.6]{jose_over_time}
+
+\end{center}
+
+El uso del nombre ha decrecido de forma lineal desde un máximo de
+\textbf{4.8\%} José registrados en 1920 hasta un \textbf{0.5\% }en
+2021 que es su popularidad en la actualidad.
+
+\paragraph{¿Cuan común es tu nombre entre los chilenos?}
+
+Para esta pregunta se considera a todos los chilens registrados en
+la base de datos, vivos o muertos aquellos que se han registrado como
+``José'' en algun momento.
+
+El numero total de nombres registrados es de \textbf{22,129,100} y
+el número total de ``José'' registrados es de \textbf{588,613.}
+
+En base a esto, la probabilidad de elegir aleatoriamente a un chileno
+registrado en esta basé de datos, y que se llame José es de un \textbf{2.65\%.}
+
+\section*{Part B: Did the beatles impact the registration of chilean baby names}
+
+Se conocen los nombres los integrantes de la banda:
+\begin{itemize}
+\item John Lennon
+\item Paul McCartey
+\item George Harrison
+\item Ringo Starr
+\end{itemize}
+Además todos tienen género masculino, se puede obtener una evolución
+historica de sus nombres atravéz del tiempo:
+
+\begin{center}
+
+\includegraphics[scale=0.6]{individual_beatles}
+
+\end{center}
+
+Se puede apreciar un notable aumento en el número de registros por
+año desde 1960 hacia adelante, además se nota que los primeros nombres
+de los integrantes son los únicos en notarse a esta escala, por lo
+que se puede despreciar la influencia de sus apellidos.
+
+Para comprobar que este efecto es solo para estos nombres, se usa
+un contraste con nombres comunes usados en Reino Unido, y se comprueba
+sus registros historicos.
+
+\begin{center}
+
+\includegraphics[scale=0.6]{beatles_constrat}
+
+\end{center}
+
+En base a estas observaciones se puede afirmar con cierta seguridad
+que, la formación de la banda, si generó una tendencia para el registro
+de nombres con los integrantes de la banda.
+
+\section*{Part C: What can you say about the gender distribution in Chile across
+the years? Do you see any trends and/or singularities?}
+
+El análisis de distribucion género se puede realizar de forma bastante
+sencilla simplemente obteniendo las proporciones totales por cada
+año.
+
+La distribución de registro de nombres se ha mantenido estable, a
+excepcion de una anomalía en el año 1920 con una alta discrepancia
+entre los géneros, con 42.5\% de hombres y 57.5\% de mujeres en ese
+año, de esta forma si se consideran los rangos desde 1920 hasta 2021
+y desde 1921 hasta 2021 se obtienen las siguientes caracteristicas
+de la distribucion de proporciones de hombres, mujeres e indeterminado.
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+\textbf{Sexo (1920-2004)} & \textbf{M} & \textbf{F} & \textbf{Sexo (1921-2004)} & \textbf{M} & \textbf{F}\tabularnewline
+\hline 
+\hline 
+Min & 42.50\% & 48.60\% & Min & 48.59\% & 48.60\%\tabularnewline
+\hline 
+Max & 51.39\% & 57.49\% & Max & 51.39\% & 51.41\%\tabularnewline
+\hline 
+Average & 50.31\% & 49.69\% & Average & 50.40\% & 49.59\%\tabularnewline
+\hline 
+std & 1.03 & 1.03 & std & 0.59 & 0.59\tabularnewline
+\hline 
+\end{tabular}
+
+\end{center}
+
+Si se comparan las variables de ambos datos hasta 2004 excluyendo
+el año 1920 el promedio cambia muy poco pero la desviacion estandar
+se reduce en un 42.7\%.
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Sexo (2005-2021)} & \textbf{M} & \textbf{F} & \textbf{I}\tabularnewline
+\hline 
+\hline 
+Min & 50.81\% & 48.65\% & 0.004\%\tabularnewline
+\hline 
+Max & 51.34\% & 49.18\% & 0.120\%\tabularnewline
+\hline 
+Average & 51.04\% & 48.94 & 0.084\%\tabularnewline
+\hline 
+std & 0.125 & 0.1206 & 0.002\tabularnewline
+\hline 
+\end{tabular}
+
+\end{center}
+
+En el año 2005 comienzan a aparecer bebés registrados con sexo indeterminado
+de forma que es necesario decidir si tiene significancia para la evaluacion,
+en este caso el numero de instancias en que se registrar valores para
+I es muy pequeño variando entre 10 y 28 personas.
+
+(insertar gráfico)
+
+\begin{center}
+
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Sexo (1921-2021)} & \textbf{M} & \textbf{F}\tabularnewline
+\hline 
+\hline 
+Min & 48.59\% & 48.60\%\tabularnewline
+\hline 
+Max & 51.39\% & 51.41\%\tabularnewline
+\hline 
+Average & 50.40\% & 49.59\%\tabularnewline
+\hline 
+std & 0.59 & 0.59\tabularnewline
+\hline 
+\end{tabular}
+
+\end{center}
+
+De esta forma considero la mejor representacion estadística de los
+datos, despues de limpiarlos, eliminando el año 1920, con una desviacion
+estandar muy pequeña de 0.59, por lo que la distribucion de género
+es básicamente constante. Lo que se evidencia en el siguiente gráfico.
+
+\begin{center}
+
+\includegraphics[scale=0.6]{gender_distribution}
+
+\end{center}
+\end{document}

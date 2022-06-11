@@ -70,7 +70,7 @@ del(fig)
 fig,ax = plt.subplots()
 plt.title("Beatles name proportion over time")
 plt.xlabel("Year")
-plt.ylabel("Proportion")
+plt.ylabel("Proportion %")
 lines = []
 for i,b in enumerate(beatles):
     history = [n for n in data if b == n.nombre and n.sexo == "M"]
@@ -87,33 +87,33 @@ beatles = [n.split(" ")[0] for n in beatles_0]
 años = {}
 
 #Si comparamos con Otros nombres populares en Reino Unido
-fig = plt.figure(2)
-plt.title("Beatles vs other common United Kindom names")
-plt.xlabel("Year")
-plt.ylabel("Proportion %")
-nd = NameDataset()
-nombre_pais = dict()
-for n in nombres:
-    pais = NameWrapper(nd.search(n)).country 
-    if pais not in nombre_pais:
-        nombre_pais[pais] = []
-    nombre_pais[pais].append(n)
-
-britains = nombre_pais['United Kingdom']
-
-for b in list(set(britains+beatles)):
-    nombre = [n for n in data if b  == n.nombre and n.sexo == "M"]
-    if len(nombre) == 0:
-        continue
-    x = [d.año for d in nombre]
-    y = [d.proportion*100 for d in nombre]
-    if b in beatles:
-        plt.plot(x,y,color="red")
-    elif y[-1] > 0.1:
-        continue
-    else:
-        plt.plot(x,y,color="blue")
-plt.savefig("beatles_constrat.png")
+#fig = plt.figure(2)
+#plt.title("Beatles vs other common United Kindom names")
+#plt.xlabel("Year")
+#plt.ylabel("Proportion %")
+#nd = NameDataset()
+#nombre_pais = dict()
+#for n in nombres:
+#    pais = NameWrapper(nd.search(n)).country 
+#    if pais not in nombre_pais:
+#        nombre_pais[pais] = []
+#    nombre_pais[pais].append(n)
+#
+#britains = nombre_pais['United Kingdom']
+#
+#for b in list(set(britains+beatles)):
+#    nombre = [n for n in data if b  == n.nombre and n.sexo == "M"]
+#    if len(nombre) == 0:
+#        continue
+#    x = [d.año for d in nombre]
+#    y = [d.proportion*100 for d in nombre]
+#    if b in beatles:
+#        plt.plot(x,y,color="red")
+#    elif y[-1] > 0.1:
+#        continue
+#    else:
+#        plt.plot(x,y,color="blue")
+#plt.savefig("beatles_constrat.png")
 
 
 #Gender distribution
@@ -162,8 +162,8 @@ print(f"Average women proportion: {women_average}")
 print(f"Average I proportion: {I_average}")
 confidence_interval = ()
 
-ax.bar(years, men,bottom=I,label='Masculino')
-ax.bar(years, women, bottom=men,label='Femenino')
+ax.stackplot(years, men,women,labels=['Masculino','Femenino'])
+#ax.stackplot(years, women, bottom=men,label='Femenino')
 plt.xlabel("Years")
 plt.ylabel("Proportion %")
 plt.savefig("gender_distribution.png")
